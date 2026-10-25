@@ -1,0 +1,1909 @@
+/* ==========================================================================
+   SPICES PnC — EKANTAKUNA CHATPATE & PANI PURI
+   Brand Design System & Core Stylesheet
+   ========================================================================== */
+
+:root {
+  /* Brand Palette */
+  --primary-yellow: #FFD700;
+  --primary-yellow-light: #FFE24D;
+  --primary-yellow-dark: #E5BE00;
+  
+  --accent-red: #CC2200;
+  --accent-red-glow: #FF3B14;
+  --accent-red-dark: #991900;
+  
+  --secondary-green: #2D6A2D;
+  --secondary-green-light: #3F8F3F;
+  --secondary-green-dark: #1E471E;
+  
+  --bg-dark-black: #5e2410;
+  --bg-dark: #864118;
+  --bg-dark-card: #260F03;
+  --bg-dark-card-hover: #331505;
+  --bg-dark-border: rgba(255, 215, 0, 0.18);
+  
+  --text-white: #FFFFFF;
+  --text-cream: #FFF4E5;
+  --text-muted: #D6C2B4;
+  --text-dark: #2A1000;
+  --text-yellow: #FFD700;
+  
+  /* Fonts */
+  --font-display: 'Baloo 2', cursive, system-ui, sans-serif;
+  --font-body: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Shadows & Glows */
+  --shadow-red-glow: 0 0 30px rgba(204, 34, 0, 0.65), 0 0 60px rgba(204, 34, 0, 0.3);
+  --shadow-yellow-glow: 0 0 35px rgba(255, 215, 0, 0.45);
+  --shadow-card: 0 15px 35px rgba(0, 0, 0, 0.6);
+  --shadow-card-hover: 0 25px 50px rgba(204, 34, 0, 0.25), 0 10px 25px rgba(0,0,0,0.8);
+  
+  /* Transitions */
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+body {
+  line-height: 1.6;
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 50% 5%, rgba(204, 34, 0, 0.15) 0%, transparent 55%),
+    radial-gradient(circle at 85% 60%, rgba(255, 215, 0, 0.05) 0%, transparent 45%);
+  background-attachment: fixed;
+  overflow-x: clip; /* 'hidden' on body makes it a scroll container and breaks position:sticky */
+  position: relative;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark-black);
+}
+::-webkit-scrollbar-thumb {
+  background: #3D1606;
+  border-radius: 5px;
+  border: 2px solid var(--bg-dark-black);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-red);
+}
+
+/* Typography Defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+p {
+  color: var(--text-muted);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.25s ease;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  user-select: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ==========================================================================
+   STICKY NAVBAR
+   ========================================================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 0.9rem 0;
+  background: rgba(14, 4, 1, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  padding: 0.65rem 0;
+  background: rgba(14, 4, 1, 0.96);
+  border-bottom-color: rgba(204, 34, 0, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.navbar .nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-logo-mini {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary-yellow);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  transition: transform 0.3s var(--ease-spring);
+}
+
+.brand-link:hover .brand-logo-mini {
+  transform: rotate(-8deg) scale(1.08);
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--primary-yellow);
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.brand-name span {
+  color: var(--accent-red);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--text-cream);
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--accent-red);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary-yellow);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+}
+
+/* Action Pill Buttons */
+.btn-foodmandu {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: linear-gradient(135deg, #E62200 0%, #CC1E00 60%, #991400 100%);
+  color: var(--text-white);
+  padding: 0.75rem 1.6rem;
+  border-radius: 9999px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
+  box-shadow: 0 4px 20px rgba(204, 34, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s var(--ease-spring);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn-foodmandu::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-foodmandu:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 30px rgba(204, 34, 0, 0.75), 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.btn-foodmandu:hover::before {
+  left: 100%;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 215, 0, 0.12);
+  color: var(--primary-yellow);
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--primary-yellow);
+  color: var(--text-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-yellow-glow);
+}
+
+/* ==========================================================================
+   1. HERO SECTION (SCROLL-DRIVEN ONLY CAROUSEL)
+   ========================================================================== */
+.hero-scroll-spacer {
+  height: 200vh !important; /* scroll distance = 100vh total, ~33vh per plate */
+  position: relative;
+}
+
+.hero-pinned-container {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 65% 50%, #280E02 0%, #150601 45%, #0B0300 100%);
+  overflow: hidden;
+  padding: 5.5rem 0 2rem;
+}
+
+.hero-ambient-glow {
+  position: absolute;
+  top: 20%;
+  right: 15%;
+  width: 550px;
+  height: 550px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.12) 0%, rgba(204, 34, 0, 0.15) 50%, transparent 75%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-layout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.05fr 1.2fr;
+  align-items: center;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+/* Left Column: Brand Story & Active State */
+.hero-text-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 3;
+}
+
+.hero-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(204, 34, 0, 0.2);
+  border: 1px solid rgba(204, 34, 0, 0.5);
+  color: #FFA588;
+  padding: 0.35rem 1.1rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 20px rgba(204, 34, 0, 0.3);
+}
+
+.hero-brand-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.hero-brand-logo {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  border: 3px solid var(--primary-yellow);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.45);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.hero-brand-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-main-heading {
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 900;
+  color: var(--text-white);
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.hero-main-heading span {
+  color: var(--primary-yellow);
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: #E2CEBE;
+  font-weight: 600;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero-subtitle i {
+  color: var(--accent-red);
+}
+
+/* Hero Dish Interactive Card (Driven by Scroll) */
+.hero-dish-card {
+  background: rgba(36, 14, 4, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 215, 0, 0.28);
+  border-radius: 20px;
+  padding: 1.3rem 1.6rem;
+  width: 100%;
+  max-width: 460px;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: border-color 0.3s ease;
+}
+
+.hero-dish-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+
+.hero-dish-badge {
+  background: rgba(255, 215, 0, 0.15);
+  color: var(--primary-yellow);
+  padding: 0.25rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.hero-dish-scroll-hint {
+  font-size: 0.8rem;
+  color: #B5937C;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.hero-dish-scroll-hint i {
+  color: var(--accent-red);
+  animation: bounceHint 1.8s infinite;
+}
+
+@keyframes bounceHint {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+.hero-dish-name {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--text-white);
+  margin-bottom: 0.4rem;
+}
+
+.hero-dish-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-dish-price-tag {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.price-val {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--primary-yellow);
+}
+
+.price-lbl {
+  font-size: 0.82rem;
+  color: #A38572;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.75rem;
+}
+
+.hero-social-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.social-circle-link {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  color: var(--text-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  transition: all 0.3s var(--ease-spring);
+}
+
+.social-circle-link:hover {
+  background: var(--accent-red);
+  color: var(--text-white);
+  border-color: var(--accent-red);
+  transform: translateY(-4px) scale(1.12);
+  box-shadow: 0 6px 20px rgba(204, 34, 0, 0.5);
+}
+
+/* Right Column: Scroll-Driven Arc & 3 Layered Plates */
+.hero-interactive-showcase {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbital-stage-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  height: 540px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dashed Orbital SVG Curve */
+.orbital-dashed-svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 240px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.75;
+}
+
+/* Orbiting Thumbnails Column on the Left Arc (Labels: SUKHA / MODERATE / GILO) */
+.orbital-thumbnails-track {
+  position: absolute;
+  left: 15px;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 0;
+  z-index: 5;
+}
+
+/* Stagger along the arc path */
+.orbital-thumb-btn:nth-child(1) {
+  transform: translateX(110px);
+}
+.orbital-thumb-btn:nth-child(2) {
+  transform: translateX(10px);
+}
+.orbital-thumb-btn:nth-child(3) {
+  transform: translateX(110px);
+}
+
+.orbital-thumb-btn {
+  background: rgba(26, 8, 2, 0.9);
+  border: 3px solid rgba(255, 215, 0, 0.35);
+  border-radius: 50%;
+  width: 82px;
+  height: 82px;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+  transition: all 0.35s var(--ease-spring);
+}
+
+.orbital-thumb-btn .thumb-img-wrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #100401;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbital-thumb-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.orbital-thumb-btn .thumb-tag {
+  position: absolute;
+  right: -75px;
+  background: rgba(14, 4, 1, 0.9);
+  color: var(--primary-yellow);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  pointer-events: none;
+  opacity: 0.85;
+  transition: all 0.25s ease;
+}
+
+/* Active Thumbnail Glowing Yellow */
+.orbital-thumb-btn.active {
+  border-color: var(--primary-yellow);
+  border-width: 4px;
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.75), 0 0 15px rgba(204, 34, 0, 0.5);
+  transform: scale(1.18) !important;
+  z-index: 10;
+}
+
+.orbital-thumb-btn.active .thumb-tag {
+  background: var(--primary-yellow);
+  color: var(--text-dark);
+  border-color: var(--primary-yellow);
+  opacity: 1;
+}
+
+/* Center Large Plate Showcase with Scroll-Driven Stack */
+.main-plate-showcase {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 90px;
+}
+
+.plate-ambient-glow {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.22) 0%, rgba(204, 34, 0, 0.18) 45%, transparent 70%);
+  filter: blur(45px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.plate-shadow-base {
+  position: absolute;
+  width: 420px;
+  height: 120px;
+  bottom: 25px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.85) 0%, transparent 70%);
+  filter: blur(25px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.main-plate-stack {
+  position: relative;
+  z-index: 3;
+  width: 460px;
+  height: 460px;
+}
+
+.scroll-plate-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.85));
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+
+/* ==========================================================================
+   2. MENU SECTION ("Spices ko Menu")
+   ========================================================================== */
+.menu-section {
+  position: relative;
+  background-color: #FFF8E7; /* Warm gentle custard / cream */
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(255, 215, 0, 0.16) 0%, transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(204, 34, 0, 0.05) 0%, transparent 50%),
+    linear-gradient(180deg, #FFFDF5 0%, #FFF8E7 100%);
+  color: var(--text-dark);
+  padding: 6rem 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 215, 0, 0.22);
+  box-shadow: inset 0 20px 40px rgba(70, 24, 8, 0.04);
+}
+
+.menu-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 35px;
+  background: var(--bg-dark-black);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);
+  pointer-events: none;
+}
+
+.menu-header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 2.5rem;
+}
+
+.menu-pill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent-red);
+  color: var(--text-white);
+  padding: 0.35rem 1.25rem;
+  border-radius: 9999px;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 4px 15px rgba(204, 34, 0, 0.35);
+}
+
+.menu-title {
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 900;
+  color: var(--text-dark);
+  margin-bottom: 0;
+  letter-spacing: -1px;
+}
+
+.menu-title span {
+  color: var(--accent-red);
+}
+
+/* Category Filter Bar */
+.menu-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.75rem;
+}
+
+.menu-filter-btn {
+  background: rgba(255, 255, 255, 0.85);
+  border: 2px solid rgba(42, 16, 0, 0.15);
+  color: var(--text-dark);
+  padding: 0.65rem 1.6rem;
+  border-radius: 9999px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.02rem;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-spring);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.menu-filter-btn:hover {
+  background: var(--text-white);
+  transform: translateY(-2px);
+  border-color: var(--accent-red);
+}
+
+.menu-filter-btn.active {
+  background: var(--accent-red);
+  color: var(--text-white);
+  border-color: var(--accent-red);
+  box-shadow: 0 6px 20px rgba(204, 34, 0, 0.4);
+}
+
+/* Chatpate Cards Grid (NO AI FLAVOR DESCRIPTIONS — CLEAN) */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.menu-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 1.5rem;
+  border: 1.5px solid rgba(74, 40, 13, 0.12);
+  box-shadow: 0 10px 25px rgba(180, 100, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s var(--ease-spring);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px rgba(180, 100, 0, 0.16), 0 4px 12px rgba(0, 0, 0, 0.06);
+  border-color: rgba(204, 34, 0, 0.35);
+}
+
+.menu-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.menu-card-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  line-height: 1.2;
+}
+
+.menu-card-badge {
+  background: #FFD700;
+  color: #2A1000;
+  border: 1px solid rgba(180, 100, 0, 0.28);
+  padding: 0.22rem 0.7rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(255, 215, 0, 0.35);
+}
+
+.menu-price-matrix {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  background: #FBF4EA;
+  border: 1px solid rgba(74, 40, 13, 0.07);
+  padding: 0.85rem;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.price-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.price-col-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #7A4E2C;
+}
+
+.price-col-value {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--accent-red);
+}
+
+
+/* ==========================================================================
+   PANI PURI SECTION (TWO PLAIN STATIC IMAGES SIDE BY SIDE — NAME AND PRICE ONLY)
+   ========================================================================== */
+.puri-clean-container {
+  margin-bottom: 3.5rem;
+}
+
+.puri-duo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.puri-card-simple {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 1.25rem;
+  border: 1.5px solid rgba(74, 40, 13, 0.12);
+  box-shadow: 0 10px 25px rgba(180, 100, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s var(--ease-spring);
+}
+
+.puri-card-simple:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 34px rgba(180, 100, 0, 0.15);
+  border-color: rgba(204, 34, 0, 0.35);
+}
+
+.puri-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #110501;
+}
+
+.puri-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.puri-card-simple-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.25rem;
+  padding: 0 0.5rem 0.25rem;
+}
+
+.puri-card-simple-info h3 {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.puri-card-simple-price {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: var(--accent-red);
+}
+
+
+/* ==========================================================================
+   COMBOS & DRINKS CATEGORY
+   ========================================================================== */
+.combos-panel-container {
+  background: #FFFDF8;
+  border-radius: 28px;
+  padding: 2.25rem;
+  border: 2px solid rgba(42, 16, 0, 0.08);
+  box-shadow: 0 12px 35px rgba(70, 30, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.combos-panel-header {
+  margin-bottom: 1.75rem;
+}
+
+.combos-panel-title {
+  font-size: 2rem;
+  color: var(--text-dark);
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.combos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 1.25rem;
+}
+
+.combo-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-radius: 18px;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(74, 40, 13, 0.12);
+  box-shadow: 0 8px 20px rgba(180, 100, 0, 0.07);
+  transition: all 0.25s ease;
+}
+
+.combo-card:hover {
+  background: #FFFDF8;
+  border-color: var(--accent-red);
+  box-shadow: 0 12px 28px rgba(180, 100, 0, 0.14);
+  transform: translateY(-3px);
+}
+
+.combo-info h4 {
+  font-size: 1.15rem;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+}
+
+.combo-info p {
+  font-size: 0.88rem;
+  color: #6B4222;
+}
+
+.combo-price {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--accent-red);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Drinks & Recommendation Strip */
+.extras-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 1.75rem;
+  margin-bottom: 3rem;
+}
+
+.extra-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 1.75rem;
+  border: 1.5px solid rgba(74, 40, 13, 0.12);
+  box-shadow: 0 10px 25px rgba(180, 100, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.extra-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(180, 100, 0, 0.14);
+}
+
+.extra-card h4 {
+  font-size: 1.3rem;
+  color: var(--text-dark) !important;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.extra-items-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.extra-item-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #4A280D !important;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dotted rgba(74, 40, 13, 0.2);
+}
+
+.extra-item-line strong,
+.extra-item-line span:first-child {
+  color: #4A280D !important;
+}
+
+.extra-item-line span:last-child {
+  color: var(--accent-red);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+/* Big Menu Order CTA Banner */
+.menu-order-foodmandu-banner {
+  text-align: center;
+  background: var(--text-dark);
+  color: var(--text-white);
+  border-radius: 24px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  box-shadow: 0 15px 40px rgba(42, 16, 0, 0.3);
+}
+
+.menu-order-foodmandu-banner h3 {
+  font-size: 1.9rem;
+  color: var(--primary-yellow);
+}
+
+.menu-order-foodmandu-banner p {
+  color: #DFC8B4;
+  max-width: 580px;
+  font-size: 1.05rem;
+}
+
+
+/* ==========================================================================
+   3. WHY SPICES SECTION — ULTRA CLEAN (ONLY 3 ITEMS, NO DESCRIPTIONS)
+   ========================================================================== */
+.vibe-section {
+  position: relative;
+  background: linear-gradient(180deg, #100401 0%, #1A0701 50%, #0C0300 100%);
+  padding: 6.5rem 0;
+  overflow: hidden;
+  color: var(--text-white);
+}
+
+.vibe-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3.5rem;
+}
+
+.vibe-title {
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+}
+
+.vibe-title span {
+  color: var(--accent-red);
+}
+
+.vibe-grid-minimal {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.vibe-card-minimal {
+  background: rgba(255, 255, 255, 0.10);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  border-radius: 24px;
+  padding: 3.5rem 1.5rem;
+  text-align: center;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35), 0 0 25px rgba(255, 215, 0, 0.08);
+  transition: all 0.35s var(--ease-spring);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.vibe-card-minimal:hover {
+  transform: translateY(-8px);
+  border-color: #FFD700;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.45), 0 0 30px rgba(255, 215, 0, 0.22);
+}
+
+.vibe-icon-clean {
+  font-size: 3.8rem;
+  line-height: 1;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+  transition: transform 0.35s var(--ease-spring);
+}
+
+.vibe-card-minimal:hover .vibe-icon-clean {
+  transform: scale(1.18);
+}
+
+.vibe-text-clean {
+  font-family: var(--font-display);
+  font-size: 1.95rem;
+  font-weight: 900;
+  color: #FFF4E5;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  letter-spacing: -0.5px;
+}
+
+
+/* ==========================================================================
+   4. FOOD WALL (PLAIN REAL PHOTOS ONLY — NO TEXT/CAPTIONS/HASHTAGS)
+   ========================================================================== */
+.gallery-section {
+  position: relative;
+  background: #0B0300;
+  padding: 6.5rem 0 7rem;
+  overflow: hidden;
+}
+
+.gallery-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 3.5rem;
+}
+
+.gallery-pill {
+  display: inline-block;
+  background: rgba(255, 215, 0, 0.12);
+  color: var(--primary-yellow);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  padding: 0.35rem 1.25rem;
+  border-radius: 9999px;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.gallery-title {
+  font-size: clamp(2.3rem, 4.8vw, 3.6rem);
+  font-weight: 900;
+  color: var(--text-white);
+  margin-bottom: 0.5rem;
+}
+
+.gallery-title span {
+  color: var(--primary-yellow);
+}
+
+.food-wall-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.wall-photo-card {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #1A0701;
+  border: 1px solid rgba(255, 215, 0, 0.18);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.65);
+  cursor: pointer;
+  transition: all 0.35s var(--ease-spring);
+}
+
+.wall-photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.wall-photo-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  border-color: var(--primary-yellow);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), 0 0 25px rgba(255, 215, 0, 0.25);
+}
+
+.wall-photo-card:hover img {
+  transform: scale(1.08);
+  filter: saturate(1.15) contrast(1.05);
+}
+
+
+/* ==========================================================================
+   5. LOCATION & STORE INFO SECTION
+   ========================================================================== */
+.location-section {
+  position: relative;
+  background: #140501;
+  border-top: 1px solid rgba(255, 215, 0, 0.15);
+  padding: 5.5rem 0;
+  color: var(--text-white);
+}
+
+.location-wrapper {
+  background: linear-gradient(135deg, #220C03 0%, #120501 100%);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.location-info h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  margin-bottom: 1rem;
+}
+
+.location-info h2 span {
+  color: var(--primary-yellow);
+}
+
+.location-info p {
+  font-size: 1.05rem;
+  margin-bottom: 1.75rem;
+  line-height: 1.6;
+}
+
+.info-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.85rem 1.25rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.info-item-icon {
+  font-size: 1.5rem;
+}
+
+.info-item-text h5 {
+  font-size: 1rem;
+  color: var(--primary-yellow);
+  margin-bottom: 0.15rem;
+}
+
+.info-item-text p {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+  color: var(--text-cream);
+}
+
+.location-map-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  height: 340px;
+  background: #0E0300;
+}
+
+.location-map-card iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+
+/* ==========================================================================
+   6. FOOTER (ONLY LOGO, TAGLINE, SOCIAL LINKS, FOODMANDU BUTTON — NO COPYRIGHT)
+   ========================================================================== */
+.site-footer {
+  position: relative;
+  background: var(--bg-dark-black);
+  padding: 4.5rem 0 3.5rem;
+  border-top: 1px solid rgba(204, 34, 0, 0.25);
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid var(--primary-yellow);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.35);
+}
+
+.footer-social-row {
+  display: flex;
+  gap: 1rem;
+}
+
+
+/* ==========================================================================
+   LIGHTBOX MODAL
+   ========================================================================== */
+.lightbox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 3, 0, 0.94);
+  backdrop-filter: blur(12px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 900px;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 14px;
+  border: 3px solid var(--primary-yellow);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -45px;
+  right: 0;
+  background: none;
+  border: none;
+  color: var(--text-white);
+  font-size: 2.2rem;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.lightbox-close:hover {
+  color: var(--accent-red);
+  transform: scale(1.2);
+}
+
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 1080px) {
+  .hero-pinned-container {
+    position: sticky !important;
+    top: 0 !important;
+    height: 100vh !important;
+    padding: 5rem 0 2rem;
+  }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3rem;
+  }
+  
+  .hero-text-col {
+    align-items: center;
+  }
+
+  .hero-brand-header {
+    justify-content: center;
+  }
+
+  .hero-dish-card {
+    max-width: 520px;
+  }
+
+  .hero-cta-group {
+    justify-content: center;
+  }
+
+  .hero-interactive-showcase {
+    margin-top: 1rem;
+  }
+  
+  .orbital-stage-wrapper {
+    max-width: 520px;
+    height: 480px;
+  }
+
+  .main-plate-showcase {
+    margin-left: 60px;
+  }
+
+  .main-plate-stack {
+    width: 360px;
+    height: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  
+  .hero-main-heading {
+    font-size: 2.3rem;
+  }
+
+  .hero-brand-logo {
+    width: 65px;
+    height: 65px;
+  }
+
+  .orbital-stage-wrapper {
+    height: 420px;
+  }
+
+  .orbital-thumb-btn {
+    width: 66px;
+    height: 66px;
+  }
+
+  .orbital-thumb-btn .thumb-tag {
+    display: none;
+  }
+
+  .main-plate-showcase {
+    margin-left: 35px;
+  }
+
+  .main-plate-stack {
+    width: 280px;
+    height: 280px;
+  }
+
+  .puri-duo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vibe-grid-minimal {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .location-wrapper {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+  }
+}
+
+
+
+/* ==========================================================================
+   MOBILE EXPERIENCE (phones first: most visitors arrive on mobile)
+   ========================================================================== */
+html { -webkit-text-size-adjust: 100%; }
+a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
+/* Hamburger button: hidden on desktop */
+.nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  border-radius: 12px;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--primary-yellow);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+.navbar.nav-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.navbar.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+.navbar.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 768px) {
+  html { scroll-padding-top: 68px; }
+  .container { padding: 0 1rem; }
+
+  /* ---- Navbar ---- */
+  .navbar { padding: 0.5rem 0; }
+  .navbar.scrolled { padding: 0.4rem 0; }
+  .navbar .nav-inner { gap: 0.5rem; }
+  .brand-link { gap: 0.5rem; min-width: 0; }
+  .brand-logo-mini { width: 36px; height: 36px; }
+  .brand-name { font-size: 1.1rem; white-space: nowrap; }
+  .nav-actions { gap: 0.5rem; flex-shrink: 0; }
+  .btn-foodmandu { padding: 0.55rem 0.9rem; font-size: 0.8rem; white-space: nowrap; gap: 0.3rem; }
+  .btn-foodmandu i { display: none; }
+  .btn-extra { display: none; }
+  .nav-toggle { display: inline-flex; }
+
+  .navbar nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    background: rgba(14, 4, 1, 0.98);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.25);
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.6);
+  }
+  .navbar.nav-open nav { display: block; }
+  .navbar.nav-open .nav-links { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 0.5rem 1rem 1rem; }
+  .navbar.nav-open .nav-links li a { display: block; padding: 0.95rem 0.25rem; font-size: 1.05rem; border-bottom: 1px solid rgba(255, 255, 255, 0.07); }
+  .navbar.nav-open .nav-links li:last-child a { border-bottom: 0; }
+  .nav-links a::after { display: none; }
+
+  /* ---- Hero: everything must fit inside one phone screen ---- */
+  .hero-pinned-container {
+    height: 100vh !important;
+    height: 100svh !important;
+    padding: 4.4rem 0 0.75rem;
+  }
+  .hero-layout { gap: 0.6rem; text-align: center; align-content: center; }
+  .hero-text-col { align-items: center; }
+  .hero-badge-pill { font-size: 0.68rem; padding: 0.25rem 0.8rem; margin-bottom: 0.5rem; }
+  .hero-brand-header { margin-bottom: 0.5rem; gap: 0.6rem; align-items: center; }
+  .hero-brand-logo { width: 46px; height: 46px; }
+  .hero-main-heading { font-size: 1.9rem; line-height: 1.1; }
+  .hero-subtitle { font-size: 0.85rem; }
+  .hero-dish-card { padding: 0.65rem 1rem; margin-bottom: 0.65rem; border-radius: 16px; max-width: 100%; }
+  .hero-dish-header { margin-bottom: 0.2rem; }
+  .hero-dish-badge { font-size: 0.7rem; padding: 0.15rem 0.65rem; }
+  .hero-dish-scroll-hint { font-size: 0.72rem; }
+  .hero-dish-name { font-size: 1.3rem; margin-bottom: 0.25rem; }
+  .hero-dish-meta { padding-top: 0.4rem; }
+  .price-val { font-size: 1.1rem; }
+  .hero-cta-group { gap: 0.5rem; margin-bottom: 0; justify-content: center; flex-wrap: nowrap; }
+  .hero-cta-group .btn-foodmandu,
+  .hero-cta-group .btn-secondary { padding: 0.6rem 0.9rem; font-size: 0.85rem; white-space: nowrap; justify-content: center; }
+  .hero-cta-group .btn-foodmandu { flex: 1 1 auto; }
+  .hero-social-bar { display: none; }
+
+  .hero-ambient-glow { width: 280px; height: 280px; filter: blur(50px); right: -10%; }
+
+  /* Plates: big plate on top, thumbnail row underneath instead of the side arc */
+  .hero-interactive-showcase { margin-top: 0; }
+  .orbital-stage-wrapper { height: auto; max-width: 100%; flex-direction: column; gap: 0.6rem; }
+  .orbital-dashed-svg { display: none; }
+  .orbital-thumbnails-track { position: static; order: 2; height: auto; padding: 0; flex-direction: row; justify-content: center; gap: 1rem; }
+  .orbital-thumb-btn:nth-child(1),
+  .orbital-thumb-btn:nth-child(2),
+  .orbital-thumb-btn:nth-child(3) { transform: none; }
+  .orbital-thumb-btn { width: 54px; height: 54px; border-width: 2px; }
+  .orbital-thumb-btn.active { border-width: 3px; transform: scale(1.12) !important; }
+  .orbital-thumb-btn .thumb-tag { display: none; }
+  .main-plate-showcase { order: 1; margin-left: 0; height: auto; }
+  .main-plate-stack { width: min(70vw, 35svh); height: min(70vw, 35svh); }
+  .plate-ambient-glow { width: min(78vw, 40svh); height: min(78vw, 40svh); filter: blur(30px); }
+  .plate-shadow-base { width: min(60vw, 31svh); height: 60px; bottom: 5px; }
+
+  /* ---- Menu ---- */
+  .menu-card { padding: 1.1rem; }
+  .menu-price-matrix { padding: 0.6rem 0.4rem; gap: 0.25rem; }
+  .price-col-label { font-size: 0.66rem; }
+  .price-col-value { font-size: 0.88rem; }
+  .combos-panel-container { padding: 1.25rem; border-radius: 22px; }
+  .combos-panel-title { font-size: 1.5rem; }
+  .combos-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+  .combo-card { padding: 1rem; gap: 0.75rem; }
+  .combo-info h4 { font-size: 1rem; }
+  .combo-info p { font-size: 0.82rem; }
+  .combo-price { font-size: 1.05rem; }
+  .extra-card { padding: 1.25rem; }
+
+  /* ---- Why Spices / Gallery / Location / Footer ---- */
+  .vibe-card-minimal { padding: 2rem 1rem; }
+  .food-wall-grid { grid-template-columns: repeat(3, 1fr); gap: 0.55rem; }
+  .wall-photo-card { border-radius: 14px; }
+  .location-section { padding: 3.5rem 0; }
+  .location-wrapper { padding: 1.25rem; gap: 1.5rem; border-radius: 22px; }
+  .location-map-card { height: 260px; }
+}
+
+/* Very small / short phones */
+@media (max-width: 400px) {
+  .hero-cta-group .btn-foodmandu,
+  .hero-cta-group .btn-secondary { padding: 0.55rem 0.7rem; font-size: 0.78rem; }
+}
+@media (max-width: 360px) {
+  .brand-name { font-size: 1rem; }
+  .hero-main-heading { font-size: 1.7rem; }
+}
+@media (max-width: 768px) and (max-height: 700px) {
+  .hero-badge-pill { display: none; }
+  .hero-subtitle { display: none; }
+}
+@media (hover: none) {
+  .btn-foodmandu:hover, .btn-secondary:hover { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-dish-scroll-hint i { animation: none; }
+}
+
+
+/* ==========================================================================
+   SUBTLE ANIMATIONS (kept light: opacity + translate only, GPU friendly)
+   ========================================================================== */
+
+/* Scroll reveal: elements are only hidden once JS is running, so nothing
+   can get stuck invisible if the script fails. */
+.js-anim [data-reveal]:not(.in-view) { opacity: 0; }
+.js-anim [data-reveal].in-view {
+  animation: revealUp 0.7s cubic-bezier(0.22, 0.8, 0.3, 1) var(--rd, 0ms) backwards;
+}
+.js-anim .wall-photo-card[data-reveal].in-view { animation-name: revealScale; }
+@keyframes revealUp {
+  from { opacity: 0; translate: 0 18px; }
+}
+@keyframes revealScale {
+  from { opacity: 0; translate: 0 10px; scale: 0.97; }
+}
+
+/* Page load: navbar + hero entrance */
+.navbar { animation: navIn 0.6s ease-out backwards; }
+@keyframes navIn { from { opacity: 0; translate: 0 -14px; } }
+
+.hero-text-col > * { animation: heroIn 0.8s cubic-bezier(0.22, 0.8, 0.3, 1) backwards; }
+.hero-text-col > *:nth-child(1) { animation-delay: 0.10s; }
+.hero-text-col > *:nth-child(2) { animation-delay: 0.20s; }
+.hero-text-col > *:nth-child(3) { animation-delay: 0.30s; }
+.hero-text-col > *:nth-child(4) { animation-delay: 0.40s; }
+.hero-text-col > *:nth-child(5) { animation-delay: 0.50s; }
+@keyframes heroIn { from { opacity: 0; translate: 0 16px; } }
+
+.hero-interactive-showcase { animation: showcaseIn 1s cubic-bezier(0.22, 0.8, 0.3, 1) 0.25s backwards; }
+@keyframes showcaseIn { from { opacity: 0; translate: 0 22px; scale: 0.96; } }
+
+/* Plate gently floats; glow breathes */
+.main-plate-stack { animation: plateFloat 7s ease-in-out infinite; }
+@keyframes plateFloat { 50% { translate: 0 -8px; } }
+.plate-ambient-glow { animation: glowBreathe 5s ease-in-out infinite; }
+@keyframes glowBreathe { 50% { opacity: 0.65; scale: 1.06; } }
+
+/* Dish name/price softly pop in when the plate changes */
+.hero-dish-card.swap .hero-dish-name,
+.hero-dish-card.swap .price-val,
+.hero-dish-card.swap .hero-dish-badge { animation: swapIn 0.45s ease-out backwards; }
+@keyframes swapIn { from { opacity: 0; translate: 0 6px; } }
+
+/* Hero order button: a soft light sweep every few seconds */
+.hero-cta-group .btn-foodmandu::before { animation: sheen 4.5s ease-in-out 1.5s infinite; }
+@keyframes sheen {
+  0%, 65% { transform: translateX(0); }
+  100% { transform: translateX(200%); }
+}
+
+/* Why Spices icons bob slightly */
+.vibe-icon-clean { display: inline-block; animation: iconBob 4.5s ease-in-out infinite; }
+.vibe-card-minimal:nth-child(2) .vibe-icon-clean { animation-delay: 0.6s; }
+.vibe-card-minimal:nth-child(3) .vibe-icon-clean { animation-delay: 1.2s; }
+@keyframes iconBob { 50% { translate: 0 -5px; } }
+
+/* Small hover/tap feedback */
+.menu-filter-btn { transition: transform 0.2s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease; }
+.menu-filter-btn:active, .btn-foodmandu:active, .btn-secondary:active { transform: scale(0.97); }
+.info-item { transition: translate 0.25s ease; }
+.info-item:hover { translate: 4px 0; }
+.navbar.nav-open .nav-links li { animation: heroIn 0.35s ease-out backwards; }
+.navbar.nav-open .nav-links li:nth-child(2) { animation-delay: 0.05s; }
+.navbar.nav-open .nav-links li:nth-child(3) { animation-delay: 0.10s; }
+.navbar.nav-open .nav-links li:nth-child(4) { animation-delay: 0.15s; }
+
+/* Respect "reduce motion" settings */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+  .js-anim [data-reveal]:not(.in-view) { opacity: 1; }
+}
+
+
+/* ==========================================================================
+   THEME: match the live site (spicespnc.com.np)
+   Warm olive-gold -> brown -> maroon diagonal gradient, cream text,
+   frosted-glass buttons and cards, serif brand heading.
+   ========================================================================== */
+:root {
+  --theme-grad: linear-gradient(135deg, #7f630f 0%, #864118 50%, #83302a 100%);
+  --glass: rgba(255, 255, 255, 0.12);
+  --glass-strong: rgba(255, 255, 255, 0.18);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --cream: #FFF4E5;
+  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+}
+
+html { background-color: #864118; }
+body { background: var(--theme-grad) fixed; }
+
+/* Sections that used flat near-black backgrounds now let the gradient through */
+.hero-pinned-container { background: transparent; }
+.vibe-section { background: transparent; }
+.gallery-section { background: rgba(70, 24, 8, 0.28); }
+.location-section { background: rgba(70, 24, 8, 0.32); border-top-color: rgba(255, 255, 255, 0.14); }
+.site-footer { background: rgba(60, 20, 6, 0.55); border-top-color: rgba(255, 255, 255, 0.14); }
+.menu-section::before { display: none; }
+
+/* Navbar: frosted glass */
+.navbar { background: rgba(110, 48, 16, 0.55); border-bottom-color: rgba(255, 255, 255, 0.16); }
+.navbar.scrolled { background: rgba(104, 44, 14, 0.82); border-bottom-color: rgba(255, 255, 255, 0.18); box-shadow: 0 10px 30px rgba(40, 12, 2, 0.45); }
+.brand-name, .brand-name span { color: var(--cream); font-family: var(--font-serif); font-weight: 700; letter-spacing: -0.3px; }
+@media (max-width: 768px) {
+  .navbar nav { background: rgba(104, 44, 14, 0.96); border-bottom-color: rgba(255, 255, 255, 0.2); }
+  .nav-toggle { background: var(--glass); border-color: var(--glass-border); }
+  .nav-toggle span { background: var(--cream); }
+}
+
+/* Buttons: frosted glass pills like the live site */
+.btn-foodmandu {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--cream);
+  box-shadow: 0 8px 24px rgba(40, 12, 2, 0.25);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.btn-foodmandu:hover { background: var(--glass-strong); box-shadow: 0 12px 30px rgba(40, 12, 2, 0.35); }
+.btn-secondary { background: rgba(255, 255, 255, 0.08); border-color: var(--glass-border); color: var(--cream); }
+.btn-secondary:hover { background: var(--glass-strong); color: var(--cream); }
+.social-circle-link { background: var(--glass); border-color: var(--glass-border); color: var(--cream); box-shadow: 0 6px 18px rgba(40, 12, 2, 0.22); }
+.social-circle-link:hover { background: var(--glass-strong); border-color: rgba(255, 255, 255, 0.35); box-shadow: 0 10px 24px rgba(40, 12, 2, 0.35); }
+
+/* Hero typography: cream serif with a soft glow, spaced-out location line */
+.hero-main-heading { font-family: var(--font-serif); font-weight: 800; color: var(--cream); letter-spacing: -0.5px; text-shadow: 0 0 32px rgba(255, 244, 229, 0.3); }
+.hero-main-heading span { color: var(--cream); }
+.hero-subtitle { text-transform: uppercase; letter-spacing: 0.32em; font-size: 0.8rem; color: rgba(255, 244, 229, 0.72); font-weight: 600; }
+.hero-badge-pill { background: var(--glass); border-color: var(--glass-border); color: var(--cream); box-shadow: none; }
+.hero-brand-logo { border-color: rgba(255, 255, 255, 0.35); box-shadow: 0 10px 30px rgba(40, 12, 2, 0.35); }
+.hero-ambient-glow { background: radial-gradient(circle, rgba(255, 215, 120, 0.2) 0%, rgba(255, 150, 80, 0.12) 50%, transparent 75%); }
+.plate-ambient-glow { background: radial-gradient(circle, rgba(255, 225, 140, 0.3) 0%, rgba(255, 140, 70, 0.16) 45%, transparent 70%); }
+
+/* Cards on the gradient become frosted glass */
+.hero-dish-card { background: var(--glass); border-color: var(--glass-border); box-shadow: 0 14px 34px rgba(40, 12, 2, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15); }
+.hero-dish-scroll-hint { color: rgba(255, 244, 229, 0.7); }
+.hero-dish-meta { border-top-color: rgba(255, 255, 255, 0.15); }
+.price-lbl { color: rgba(255, 244, 229, 0.65); }
+.orbital-thumb-btn { background: var(--glass); border-color: rgba(255, 255, 255, 0.35); box-shadow: 0 10px 24px rgba(40, 12, 2, 0.35); }
+.orbital-thumb-btn .thumb-img-wrapper { background: rgba(60, 20, 6, 0.35); }
+.orbital-thumb-btn .thumb-tag { background: rgba(104, 44, 14, 0.85); border-color: var(--glass-border); }
+.vibe-card-minimal {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.26) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  box-shadow: 0 16px 36px rgba(40, 12, 2, 0.35), 0 0 25px rgba(255, 215, 0, 0.12) !important;
+}
+.vibe-card-minimal:hover {
+  background: rgba(255, 255, 255, 0.20) !important;
+  border-color: #FFD700 !important;
+  box-shadow: 0 22px 48px rgba(40, 12, 2, 0.45), 0 0 30px rgba(255, 215, 0, 0.25) !important;
+}
+.vibe-text-clean {
+  color: #FFF4E5 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+}
+.vibe-title span { color: var(--primary-yellow); }
+.location-wrapper { background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.05) 100%); border-color: var(--glass-border); box-shadow: 0 20px 50px rgba(40, 12, 2, 0.3); }
+.info-item { background: rgba(255, 255, 255, 0.1); border-color: var(--glass-border); }
+.location-map-card { border-color: var(--glass-border); background: rgba(60, 20, 6, 0.4); }
+.wall-photo-card { background: rgba(60, 20, 6, 0.4); }
+.footer-social-row a, .footer-social-row .social-circle-link { background: var(--glass); border-color: var(--glass-border); }
+
+::-webkit-scrollbar-thumb { background: #a5622b; }
+
+
+/* Plate animation styling: driven by JS virtual desktop transitions */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-plate-img {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   MOBILE: BIGGER HERO PLATE
+   ========================================================================== */
+@media (max-width: 768px) {
+  .main-plate-stack { width: min(80vw, 41svh); height: min(80vw, 41svh); }
+  .plate-ambient-glow { width: min(88vw, 46svh); height: min(88vw, 46svh); }
+  .plate-shadow-base { width: min(66vw, 34svh); }
+  .hero-badge-pill { display: none; } /* frees room so the hero still fits one screen */
+}

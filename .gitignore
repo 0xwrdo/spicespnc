@@ -1,0 +1,4 @@
+*.zip
+*.bak
+.env
+node_modules/

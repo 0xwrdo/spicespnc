@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#864118">
+  <title>Spices PnC — Ekantakuna, Lalitpur</title>
+  <meta name="description" content="Welcome to Spices PnC in Ekantakuna, Lalitpur. Experience authentic Nepali chatpate, Waiwai mixes, Current sticks, and refreshing Pani Puri. Order on Foodmandu!">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+
+  <!-- Google Fonts: Baloo 2 (Display) & Nunito (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800;900&family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       STICKY NAVBAR
+       ========================================================================== -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#hero" class="brand-link">
+        <img src="images/logo-circle.webp" alt="Spices PnC Logo" class="brand-logo-mini">
+        <div class="brand-name">Spices <span>PnC</span></div>
+      </a>
+
+      <nav id="primaryNav" aria-label="Main">
+        <ul class="nav-links">
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#why-spices">Why Spices?</a></li>
+          <li><a href="#gallery">Food Wall</a></li>
+          <li><a href="#location">Find Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://foodmandu.com/Restaurant/Details/2305" target="_blank" rel="noopener noreferrer" class="btn-foodmandu">
+          <span>Order<span class="btn-extra"> on Foodmandu</span></span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       1. HERO SECTION (SCROLL-DRIVEN ONLY CAROUSEL)
+       ========================================================================== -->
+    <!-- HERO: scroll-driven plate switcher -->
+  <div class="hero-scroll-spacer" id="heroSpacer">
+    <div class="hero-pinned-container" id="heroPinned">
+      <div class="hero-ambient-glow" aria-hidden="true"></div>
+      <div class="container hero-layout">
+
+        <!-- LEFT: brand + dish info -->
+        <div class="hero-text-col">
+          <div class="hero-badge-pill">
+            <span>🌶️</span> Ekantakuna, Lalitpur • Open Daily
+          </div>
+          <div class="hero-brand-header">
+            <img src="images/logo-circle.webp" alt="Spices PnC Logo" class="hero-brand-logo">
+            <div class="hero-brand-titles">
+              <h1 class="hero-main-heading">Spices <span>PnC</span></h1>
+              <p class="hero-subtitle">Ekantakuna, Lalitpur</p>
+            </div>
+          </div>
+
+          <div class="hero-dish-card" id="heroDishCard">
+            <div class="hero-dish-header">
+              <span class="hero-dish-badge" id="heroDishBadge">SUKHA</span>
+              <div class="hero-dish-scroll-hint">↓ Scroll to explore</div>
+            </div>
+            <h2 class="hero-dish-name" id="heroDishName">Sukha Chatpate</h2>
+            <div class="hero-dish-meta">
+              <div class="hero-dish-price-tag">
+                <span class="price-val" id="heroDishPrice">Rs. 65 / 40</span>
+                <span class="price-lbl">(Large / Small)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-cta-group">
+            <a href="https://foodmandu.com/Restaurant/Details/2305" target="_blank" rel="noopener noreferrer" class="btn-foodmandu">
+              <span>Order on Foodmandu →</span>
+            </a>
+            <a href="#menu" class="btn-secondary"><span>View Menu ↓</span></a>
+          </div>
+
+          <div class="hero-social-bar">
+            <a href="https://wa.me/9779813206933" target="_blank" rel="noopener noreferrer" class="social-circle-link" title="WhatsApp" aria-label="WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="https://www.facebook.com/p/SRS-Spices-100077555063290/" target="_blank" rel="noopener noreferrer" class="social-circle-link" title="Facebook" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/spices_pnc/" target="_blank" rel="noopener noreferrer" class="social-circle-link" title="Instagram" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@spices_pnc" target="_blank" rel="noopener noreferrer" class="social-circle-link" title="TikTok" aria-label="TikTok">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Scroll-Driven Arc & 3 Layered Plates -->
+        <div class="hero-interactive-showcase">
+          <div class="orbital-stage-wrapper">
+            <!-- Curved Dashed Track SVG -->
+            <svg class="orbital-dashed-svg" viewBox="0 0 240 540" fill="none" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M 210,35 C 40,160 40,380 210,505" 
+                    stroke="rgba(255, 215, 0, 0.45)" 
+                    stroke-width="2.5" 
+                    stroke-dasharray="8 8" 
+                    fill="none"/>
+            </svg>
+
+            <!-- 3 Circular Thumbnails along the Arc (Labels: SUKHA / MODERATE / GILO) -->
+            <div class="orbital-thumbnails-track">
+              <!-- 1. Sukha: chatpate-sukha.webp -->
+              <button class="orbital-thumb-btn active" data-plate="0" aria-label="Sukha">
+                <div class="thumb-img-wrapper">
+                  <img src="images/chatpate-sukha.webp" alt="Sukha">
+                </div>
+                <span class="thumb-tag">SUKHA</span>
+              </button>
+
+              <!-- 2. Moderate: chatpate-moderate.webp -->
+              <button class="orbital-thumb-btn" data-plate="1" aria-label="Moderate">
+                <div class="thumb-img-wrapper">
+                  <img src="images/chatpate-moderate.webp" alt="Moderate">
+                </div>
+                <span class="thumb-tag">MODERATE</span>
+              </button>
+
+              <!-- 3. Gilo: chatpate-gilo.webp -->
+              <button class="orbital-thumb-btn" data-plate="2" aria-label="Gilo">
+                <div class="thumb-img-wrapper">
+                  <img src="images/chatpate-gilo.webp" alt="Gilo">
+                </div>
+                <span class="thumb-tag">GILO</span>
+              </button>
+            </div>
+
+            <!-- Main Hero Plate Stage: Scroll-Driven Layered Plates -->
+            <div class="main-plate-showcase">
+              <div class="plate-ambient-glow"></div>
+              <div class="plate-shadow-base"></div>
+              
+              <div class="main-plate-stack">
+                <!-- Plate 0: SUKHA (chatpate-sukha.webp) -->
+                <img src="images/chatpate-sukha.webp" alt="Sukha Chatpate" class="scroll-plate-img plate-sukha active">
+                
+                <!-- Plate 1: MODERATE (chatpate-moderate.webp) -->
+                <img src="images/chatpate-moderate.webp" alt="Moderate Chatpate" class="scroll-plate-img plate-moderate">
+                
+                <!-- Plate 2: GILO (chatpate-gilo.webp) -->
+                <img src="images/chatpate-gilo.webp" alt="Gilo Chatpate" class="scroll-plate-img plate-gilo">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- end hero -->
+
+
+  <!-- ==========================================================================
+       2. MENU SECTION ("Spices ko Menu")
+       ========================================================================== -->
+  <section id="menu" class="menu-section">
+    <div class="container">
+      <div class="menu-header">
+        <div class="menu-pill-tag">
+          <span>🔥</span> Street Food Heritage
+        </div>
+        <h2 class="menu-title">Spices <span>ko Menu</span></h2>
+      </div>
+
+      <!-- Category Filter Controls -->
+      <div class="menu-controls">
+        <button class="menu-filter-btn active" data-filter="all">
+          <i class="fa-solid fa-utensils"></i> All Items
+        </button>
+        <button class="menu-filter-btn" data-filter="chatpate">
+          <i class="fa-solid fa-pepper-hot"></i> Chatpate
+        </button>
+        <button class="menu-filter-btn" data-filter="puri">
+          <i class="fa-solid fa-bowl-rice"></i> Pani Puri & Dahi Puri
+        </button>
+        <button class="menu-filter-btn" data-filter="combo">
+          <i class="fa-solid fa-fire"></i> Combos & Drinks
+        </button>
+      </div>
+
+      <!-- CHATPATE CATEGORY BLOCK -->
+      <div class="menu-category-section" id="chatpateSection" data-category-group="chatpate">
+        <!-- 8 Chatpate Cards Grid (NO AI FLAVOR DESCRIPTIONS — ONLY NAME, BADGE, PRICES) -->
+        <div class="menu-grid">
+          <!-- 1. Normal Chatpate -->
+          <div class="menu-card" data-category="chatpate">
+            <div class="menu-card-header">
+              <h3 class="menu-card-title">Normal Chatpate</h3>
+              <span class="menu-card-badge">Classic</span>
+            </div>
+            <div class="menu-price-matrix">
+              <div class="price-col">
+                <span class="price-col-label">Sukha</span>
+                <span class="price-col-value">Rs. 65 / 40</span>
+              </div>
+              <div class="price-col">
+                <span class="price-col-label">Moderate</span>
+                <span class="price-col-value">Rs. 65 / 40</span>
+              </div>
+              <div class="price-col">
+                <span class="price-col-label">Gilo</span>
+                <span class="price-col-value">Rs. 70 / 45</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Waiwai Chatpate -->
+          <div class="menu-card" data-category="chatpate">
+            <div class="menu-card-header">
+              <h3 class="menu-card-title">Waiwai Chatpate</h3>
+              <span class="menu-card-badge" style="background:rgba(204,34,0,0.15); color:#CC2200;">⭐ Bestseller</span>
+            </div>
+            <div class="menu-price-matrix">
+              <div class="price-col">
+                <span class="price-col-label">Sukha</span>
+                <span class="price-col-value">Rs. 90 / 60</span>
+              </div>
+              <div class="price-col">
+                <span class="price-col-label">Moderate</span>
+                <span class="price-col-value">Rs. 90 / 60</span>
+              </div>
+              <div class="price-col">
+                <span class="price-col-label">Gilo</span>
+                <span class="price-col-value">Rs. 95 / 65</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Chips Chatpate -->
+          <div class="menu-card" data-category="chatpate">
+            <div class="menu-card-header">
+              <h3 class="menu-card-title">Chips Chatpate</h3>
+              <span class="menu-card-badge">Crisp Crown</span>
+            </div>
+            <div class="menu-price-matrix">
+              <div class="price-col">
+                <span class="price-col-label">Sukha</span>
+                <span class="price-col-value">Rs. 90 / 55</span>
+              </div>
+              <div class="price-col">
+                <span class="price-col-label">Moderate</span>
+                <span class="price-col-value">Rs. 90 / 55</span>
+              </div>
+              <div class="price-col">
+                <span class="price-col-label">Gilo</span>
+                <span class="price-col-value">Rs. 95 / 60</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Current Sticks Chatpate -->
+          <div class="menu-card" data-category="chatpate">
+            <div class="menu-card-header">
+              <h3 class="menu-card-title">Current Sticks Chatpate</h3>
+              <span class="menu-card-badge" style="background:#CC2200; color:#fff;">🔥 Extra Tato</span>
+            </div>
+            <div class="menu-price-matrix">
+              <div class="price-col">
+                <span class="price-col-label">Sukha</span>
+                <span class="price-col-value">Rs. 125</span>
+              </div>
+              <div class="price-col">
+                <span class="price-col-label">Moderate</span>
+                <span class="price-col-value">Rs. 125</span>
+              </div>
+              <div class="price-col">
+                <span class="price-col-label">Gilo</span>
+                <span class="price-col-value">Rs. 130</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Waiwai Chips Chatpate -->
+          <div class="menu-card" data-category="chatpate">
+            <div class="menu-card-header">
+              <h3 class="menu-card-title">Waiwai Chips Chatpate</h3>
+              <span class="menu-card-badge">Double Crunch</span>
+            </div>
+            <div class="menu-price-matrix">
+              <div class="price-col">
+                <span class="price-col-label">Sukha</span>
+                <span class="price-col-value">Rs. 115 / 75</span>
+              </div>
+              <div class="price-col">
+                <span class="price-col-label">Moderate</span>
+                <span class="price-col-value">Rs. 115 / 75</span>
+              </div>
+              <div class="price-col">
+                <span class="price-col-label">Gilo</span>
+                <span class="price-col-value">Rs. 120 / 80</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Waiwai Current Chatpate -->
+          <div class="menu-card" data-category="chatpate">
+            <div class="menu-card-header">
+              <h3 class="menu-card-title">Waiwai Current Chatpate</h3>
+              <span class="menu-card-badge" style="background:#CC2200; color:#fff;">🌶️ Fiery Duo</span>
+            </div>
+            <div class="menu-price-matrix">
+              <div class="price-col">
+                <span class="price-col-label">Sukha</span>
+                <span class="price-col-value">Rs. 145</span>
+              </div>
+              <div class="price-col">
+                <span class="price-col-label">Moderate</span>
+                <span class="price-col-value">Rs. 145</span>
+              </div>
+              <div class="price-col">
+                <span class="price-col-label">Gilo</span>
+                <span class="price-col-value">Rs. 155</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. Current Chips Chatpate -->
+          <div class="menu-card" data-category="chatpate">
+            <div class="menu-card-header">
+              <h3 class="menu-card-title">Current Chips Chatpate</h3>
+              <span class="menu-card-badge">Spicy & Crisp</span>
+            </div>
+            <div class="menu-price-matrix">
+              <div class="price-col">
+                <span class="price-col-label">Sukha</span>
+                <span class="price-col-value">Rs. 150</span>
+              </div>
+              <div class="price-col">
+                <span class="price-col-label">Moderate</span>
+                <span class="price-col-value">Rs. 150</span>
+              </div>
+              <div class="price-col">
+                <span class="price-col-label">Gilo</span>
+                <span class="price-col-value">Rs. 160</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8. All Mixed Chatpate -->
+          <div class="menu-card" data-category="chatpate">
+            <div class="menu-card-header">
+              <h3 class="menu-card-title">All Mixed Chatpate</h3>
+              <span class="menu-card-badge" style="background:var(--primary-yellow); color:var(--text-dark);">👑 The King</span>
+            </div>
+            <div class="menu-price-matrix">
+              <div class="price-col">
+                <span class="price-col-label">Sukha</span>
+                <span class="price-col-value">Rs. 185</span>
+              </div>
+              <div class="price-col">
+                <span class="price-col-label">Moderate</span>
+                <span class="price-col-value">Rs. 185</span>
+              </div>
+              <div class="price-col">
+                <span class="price-col-label">Gilo</span>
+                <span class="price-col-value">Rs. 195</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANI PURI SECTION (TWO PLAIN STATIC IMAGES SIDE BY SIDE — NAME AND PRICE ONLY) -->
+      <div class="menu-category-section" id="puriSection" data-category-group="puri">
+        <div class="puri-clean-container">
+          <div class="puri-duo-grid">
+            <!-- Card 1: Pani Puri -->
+            <div class="puri-card-simple">
+              <div class="puri-card-img-wrap">
+                <img src="images/pani-puri-white-plate.jpg" alt="Pani Puri" loading="lazy">
+              </div>
+              <div class="puri-card-simple-info">
+                <h3>Pani Puri</h3>
+                <span class="puri-card-simple-price">Rs. 70 / 35</span>
+              </div>
+            </div>
+
+            <!-- Card 2: Dahi Puri -->
+            <div class="puri-card-simple">
+              <div class="puri-card-img-wrap">
+                <img src="images/pani-puri-steel-bowl.jpg" alt="Dahi Puri" loading="lazy">
+              </div>
+              <div class="puri-card-simple-info">
+                <h3>Dahi Puri</h3>
+                <span class="puri-card-simple-price">Rs. 120</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMBOS & DRINKS CATEGORY BLOCK -->
+      <div class="menu-category-section" id="comboSection" data-category-group="combo">
+        <div class="combos-panel-container">
+          <div class="combos-panel-header">
+            <h3 class="combos-panel-title">
+              <span>🍱</span> Spices ko Combo Menu
+            </h3>
+          </div>
+
+          <div class="combos-grid">
+            <div class="combo-card">
+              <div class="combo-info">
+                <h4>Most Popular Combo</h4>
+                <p>2 Pani Puri + Waiwai Chatpate + Slice</p>
+              </div>
+              <div class="combo-price">Rs. 300 / 305</div>
+            </div>
+
+            <div class="combo-card">
+              <div class="combo-info">
+                <h4>Solitude Combo</h4>
+                <p>Pani Puri + Half Waiwai Chatpate + Nimbupani</p>
+              </div>
+              <div class="combo-price">Rs. 180 / 185</div>
+            </div>
+
+            <div class="combo-card">
+              <div class="combo-info">
+                <h4>Dahi Wala Combo</h4>
+                <p>Normal Chatpate + Pani Puri + Dahi Puri + Pepsi</p>
+              </div>
+              <div class="combo-price">Rs. 325 / 330</div>
+            </div>
+
+            <div class="combo-card">
+              <div class="combo-info">
+                <h4>Perfect Duo Combo</h4>
+                <p>2 Pani Puri + Chips Chatpate + Appy + Frooti</p>
+              </div>
+              <div class="combo-price">Rs. 290 / 295</div>
+            </div>
+
+            <div class="combo-card">
+              <div class="combo-info">
+                <h4>Pani Puri Nai Pani Puri Combo</h4>
+                <p>4 Full Plates of Signature Crisp Pani Puri</p>
+              </div>
+              <div class="combo-price">Rs. 280</div>
+            </div>
+
+            <div class="combo-card">
+              <div class="combo-info">
+                <h4>Three Two One Combo</h4>
+                <p>3 Pani Puri + 2 Dahi Puri + 1 All Mixed Chatpate</p>
+              </div>
+              <div class="combo-price">Rs. 635 / 645</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Drinks & Recommendation Strip -->
+        <div class="extras-strip">
+          <div class="extra-card">
+            <h4><span>🥤</span> Chilled Beverages</h4>
+            <div class="extra-items-grid">
+              <div class="extra-item-line"><span>Slice / Pepsi / Dew</span><span>Rs. 70</span></div>
+              <div class="extra-item-line"><span>Fresh Nimbupani</span><span>Rs. 50</span></div>
+              <div class="extra-item-line"><span>Appy Fizz / Frooti</span><span>Rs. 30</span></div>
+            </div>
+          </div>
+
+          <div class="extra-card" style="background:#FFF5E5; border-color:rgba(204,34,0,0.3);">
+            <h4><span>🏺</span> Special Recommendation</h4>
+            <div class="extra-items-grid">
+              <div class="extra-item-line">
+                <div>
+                  <strong>Juju Dhau (Matka Dahi)</strong>
+                </div>
+                <span>Rs. 65</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Direct Foodmandu Order Callout Banner -->
+      <div class="menu-order-foodmandu-banner">
+        <h3>Ready to taste Ekantakuna's best?</h3>
+        <p>Skip the wait and get hot, crunchy chatpate and chilled pani puri delivered straight to your door.</p>
+        <a href="https://foodmandu.com/Restaurant/Details/2305" target="_blank" rel="noopener noreferrer" class="btn-foodmandu">
+          <span>Order on Foodmandu Now →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       3. WHY SPICES SECTION (ONLY 3 ITEMS — NO DESCRIPTIONS)
+       ========================================================================== -->
+  <section id="why-spices" class="vibe-section">
+    <div class="container">
+      <div class="vibe-header">
+        <h2 class="vibe-title">Why <span>Spices?</span></h2>
+      </div>
+
+      <div class="vibe-grid-minimal">
+        <div class="vibe-card-minimal">
+          <div class="vibe-icon-clean">🌶️</div>
+          <div class="vibe-text-clean">Tato Tato</div>
+        </div>
+
+        <div class="vibe-card-minimal">
+          <div class="vibe-icon-clean">🤌</div>
+          <div class="vibe-text-clean">Authentic Taste</div>
+        </div>
+
+        <div class="vibe-card-minimal">
+          <div class="vibe-icon-clean">⚡</div>
+          <div class="vibe-text-clean">Fast Serve</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       4. GALLERY / FOOD WALL (PLAIN REAL PHOTOS ONLY — NO TEXT/CAPTIONS/HASHTAGS)
+       ========================================================================== -->
+  <section id="gallery" class="gallery-section">
+    <div class="container">
+      <div class="gallery-header">
+        <span class="gallery-pill">Food Wall</span>
+        <h2 class="gallery-title">Real Plates <span>at Spices PnC</span></h2>
+      </div>
+
+      <div class="food-wall-grid">
+        <!-- 1. Chips Chatpate Bowl -->
+        <div class="wall-photo-card">
+          <img src="images/gallery/chips-chatpate-bowl.jpg" alt="Spices PnC real plate" loading="lazy">
+        </div>
+
+        <!-- 2. Orange Bowl Crunch -->
+        <div class="wall-photo-card">
+          <img src="images/gallery/orange-bowl-crunch.jpg" alt="Spices PnC real plate" loading="lazy">
+        </div>
+
+        <!-- 3. Traditional Steel Plate -->
+        <div class="wall-photo-card">
+          <img src="images/gallery/steel-plate-street.jpg" alt="Spices PnC real plate" loading="lazy">
+        </div>
+
+        <!-- 4. Saucy Gilo Special -->
+        <div class="wall-photo-card">
+          <img src="images/gallery/saucy-gilo-special.jpg" alt="Spices PnC real plate" loading="lazy">
+        </div>
+
+        <!-- 5. Waiwai & Chips Combo -->
+        <div class="wall-photo-card">
+          <img src="images/gallery/waiwai-chips-combo.jpg" alt="Spices PnC real plate" loading="lazy">
+        </div>
+
+        <!-- 6. Current Sticks Platter -->
+        <div class="wall-photo-card">
+          <img src="images/gallery/current-sticks-platter.jpg" alt="Spices PnC real plate" loading="lazy">
+        </div>
+
+        <!-- 7. Street Mound Mix -->
+        <div class="wall-photo-card">
+          <img src="images/gallery/street-mound-authentic.jpg" alt="Spices PnC real plate" loading="lazy">
+        </div>
+
+        <!-- 8. Sukha White Plate -->
+        <div class="wall-photo-card">
+          <img src="images/gallery/sukha-chatpate-plate.jpg" alt="Spices PnC real plate" loading="lazy">
+        </div>
+
+        <!-- 9. Close-up Fiery Gilo -->
+        <div class="wall-photo-card">
+          <img src="images/gallery/close-fiery-gilo.jpg" alt="Spices PnC real plate" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       5. LOCATION & STORE INFO SECTION
+       ========================================================================== -->
+  <section id="location" class="location-section">
+    <div class="container">
+      <div class="location-wrapper">
+        <div class="location-info">
+          <h2>Visit Us in <span>Ekantakuna</span></h2>
+          <p>
+            Drop by our popular snack stall near Ekantakuna Road, Lalitpur for an authentic Nepali street food experience.
+          </p>
+
+          <div class="info-cards-list">
+            <div class="info-item">
+              <div class="info-item-icon">📍</div>
+              <div class="info-item-text">
+                <h5>Location</h5>
+                <p>Ekantakuna Road, Lalitpur, Kathmandu Valley, Nepal</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-item-icon">📞</div>
+              <div class="info-item-text">
+                <h5>Phone / WhatsApp</h5>
+                <p>+977 9813206933 / +977 9768548904</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-item-icon">🛵</div>
+              <div class="info-item-text">
+                <h5>Home Delivery</h5>
+                <p>Available on Foodmandu</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+            <!-- Real Google Maps link -->
+            <a href="https://maps.app.goo.gl/Mr9axPYcbtBMigQx6" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+              <i class="fa-solid fa-diamond-turn-right"></i> Open on Google Maps
+            </a>
+            <!-- Real Foodmandu link -->
+            <a href="https://foodmandu.com/Restaurant/Details/2305" target="_blank" rel="noopener noreferrer" class="btn-foodmandu">
+              <span>Order on Foodmandu</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="location-map-card">
+          <iframe 
+            src="https://maps.google.com/maps?q=Spices+PnC+Ekantakuna+Lalitpur&output=embed" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Spices PnC Google Map Location">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       6. FOOTER (ONLY LOGO, SOCIAL LINKS, FOODMANDU BUTTON)
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img src="images/logo-circle.webp" alt="Spices PnC" class="footer-logo">
+
+      <!-- Real Scraped Links -->
+      <div class="footer-social-row">
+        <a href="https://wa.me/9779813206933" target="_blank" rel="noopener noreferrer" class="social-circle-link" title="WhatsApp" aria-label="WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="https://www.facebook.com/p/SRS-Spices-100077555063290/" target="_blank" rel="noopener noreferrer" class="social-circle-link" title="Facebook" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/spices_pnc/" target="_blank" rel="noopener noreferrer" class="social-circle-link" title="Instagram" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@spices_pnc" target="_blank" rel="noopener noreferrer" class="social-circle-link" title="TikTok" aria-label="TikTok">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+        <a href="https://maps.app.goo.gl/Mr9axPYcbtBMigQx6" target="_blank" rel="noopener noreferrer" class="social-circle-link" title="Google Maps" aria-label="Google Maps">
+          <i class="fa-solid fa-location-dot"></i>
+        </a>
+      </div>
+
+      <a href="https://foodmandu.com/Restaurant/Details/2305" target="_blank" rel="noopener noreferrer" class="btn-foodmandu">
+        <span>Order on Foodmandu →</span>
+      </a>
+    </div>
+  </footer>
+
+
+  <!-- LIGHTBOX MODAL (PHOTO ONLY — NO CAPTIONS) -->
+  <div class="lightbox-modal" role="dialog" aria-hidden="true">
+    <div class="lightbox-content">
+      <button class="lightbox-close" aria-label="Close image modal">&times;</button>
+      <img src="" alt="Full view preview" class="lightbox-img">
+    </div>
+  </div>
+
+
+  <!-- Application Logic (Vanilla JS, Zero Dependencies) -->
+  <script src="js/app.js"></script>
+</body>
+</html>
